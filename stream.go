@@ -121,7 +121,7 @@ func WithStreamSendTs(ts uint64) StreamOption {
 type StreamChannel interface {
 	// Join certain Stream Channel
 	// Returns the snapshot of current topic infos and a golang chan for TopicEvent
-	Join(opts ...StreamOption) (map[string][]string, <-chan *TopicEvent, error)
+	Join(opts ...StreamOption) (map[string][]string, <-chan *TopicEvent, <-chan string, error)
 	// Leave certain Stream Channel
 	Leave() error
 	// ChannelName returns the name for current Stream Channel
@@ -143,4 +143,6 @@ type StreamChannel interface {
 	UnsubscribeTopic(topic string, userIds []string) error
 	// GetSubscribedUsers returns all subscribed users locally.
 	GetSubscribedUsers(topic string) ([]string, error)
+	// RenewToken
+	RenewToken(token string) error
 }

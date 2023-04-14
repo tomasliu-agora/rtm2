@@ -16,12 +16,17 @@ type ConnectionEvent struct {
 	// Reasons for connection state change.
 	// See consts.go for detail.
 	Reason int32
+	// channel name
+	Channel string
 }
 
 type RTMClient interface {
 	// Login the Agora RTM service. The operation result will be returned.
 	// Connection Events will be notified by event channel.
-	Login(token string) (<-chan *ConnectionEvent, error)
+	// Token expire events will be notified:
+	// - Empty string stands for RTM Token
+	// - Otherwise, the Stream Channel name will be received
+	Login(token string) (<-chan *ConnectionEvent, <-chan string, error)
 	// Logout the Agora RTM service.
 	// Be noticed that this method will break the rtm service including storage/lock/presence.
 	Logout() error

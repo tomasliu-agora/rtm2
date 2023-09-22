@@ -13,9 +13,10 @@ const (
 	StreamQosPriorityNormal  StreamPriority = 2
 	StreamQosPriorityLow     StreamPriority = 3
 
-	TopicEventSnapshot TopicEventType = 0
-	TopicEventJoin     TopicEventType = 1
-	TopicEventLeave    TopicEventType = 2
+	TopicEventNone     TopicEventType = 0
+	TopicEventSnapshot TopicEventType = 1
+	TopicEventJoin     TopicEventType = 2
+	TopicEventLeave    TopicEventType = 3
 )
 
 type TopicEvent struct {
@@ -40,8 +41,9 @@ type StreamOptions struct {
 	SyncMedia bool
 
 	// Publish
-	Type   MessageType
-	SendTs uint64
+	Type       MessageType
+	SendTs     uint64
+	CustomType string
 }
 
 type StreamOption func(*StreamOptions)
@@ -115,6 +117,13 @@ func WithStreamMessageType(t MessageType) StreamOption {
 func WithStreamSendTs(ts uint64) StreamOption {
 	return func(c *StreamOptions) {
 		c.SendTs = ts
+	}
+}
+
+// WithCustomType is custom type of the message, up to 32 bytes for customize
+func WithStreamCustomType(customType string) StreamOption {
+	return func(c *StreamOptions) {
+		c.CustomType = customType
 	}
 }
 

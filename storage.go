@@ -1,5 +1,15 @@
 package rtm2
 
+type StorageEventType int32
+
+const (
+	StorageTypeNone     StorageEventType = 0
+	StorageTypeSnapshot StorageEventType = 1
+	StorageTypeSet      StorageEventType = 2
+	StorageTypeUpdate   StorageEventType = 3
+	StorageTypeRemove   StorageEventType = 4
+)
+
 type MetadataItem struct {
 	Key      string
 	Value    string
@@ -9,6 +19,7 @@ type MetadataItem struct {
 }
 
 type StorageEvent struct {
+	EventType     StorageEventType
 	MajorRevision int64
 	Items         map[string]*MetadataItem
 }

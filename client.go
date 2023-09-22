@@ -4,8 +4,10 @@ package rtm2
 type ChannelType int
 
 const (
-	ChannelTypeMessage ChannelType = 0 // Message Channel
-	ChannelTypeStream  ChannelType = 1 // Stream Channel
+	ChannelTypeNone    ChannelType = 0
+	ChannelTypeMessage ChannelType = 1 // Message Channel
+	ChannelTypeStream  ChannelType = 2 // Stream Channel
+	ChannelTypeUser    ChannelType = 3 // User Channel
 )
 
 // ConnectionEvent will be notified when the connection state changes between rtm sdk and agora service.
@@ -26,7 +28,7 @@ type RTMClient interface {
 	// Token expire events will be notified:
 	// - Empty string stands for RTM Token
 	// - Otherwise, the Stream Channel name will be received
-	Login(token string) (<-chan *ConnectionEvent, <-chan string, error)
+	Login(token string) (<-chan *ConnectionEvent, <-chan string, <-chan *Message, error)
 	// Logout the Agora RTM service.
 	// Be noticed that this method will break the rtm service including storage/lock/presence.
 	Logout() error

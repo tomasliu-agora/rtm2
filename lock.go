@@ -3,12 +3,13 @@ package rtm2
 type LockEventType int
 
 const (
-	LockTypeSnapshot LockEventType = 0 // Triggered after reconnecting with rtm service.
-	LockTypeSet      LockEventType = 1 // Triggered after certain lock is set
-	LockTypeRemove   LockEventType = 2 // Triggered after certain lock is removed
-	LockTypeAcquired LockEventType = 3 // Triggered after certain lock is acquired by certain User (including self)
-	LockTypeReleased LockEventType = 4 // Triggered after certain lock is released by certain User (including self)
-	LockTypeExpired  LockEventType = 5 // Triggered after certain lock is expired
+	LockTypeNone     LockEventType = 0
+	LockTypeSnapshot LockEventType = 1 // Triggered after reconnecting with rtm service.
+	LockTypeSet      LockEventType = 2 // Triggered after certain lock is set
+	LockTypeRemove   LockEventType = 3 // Triggered after certain lock is removed
+	LockTypeAcquired LockEventType = 4 // Triggered after certain lock is acquired by certain User (including self)
+	LockTypeReleased LockEventType = 5 // Triggered after certain lock is released by certain User (including self)
+	LockTypeExpired  LockEventType = 6 // Triggered after certain lock is expired
 )
 
 type LockEvent struct {

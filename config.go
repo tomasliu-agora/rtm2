@@ -18,4 +18,6 @@ type RTMConfig struct {
 	FilePath string
 	// External logger for golang side log file.
 	Logger *zap.Logger
+	// Request timeout for golang sdk(ms)
+	RequestTimeout int32
 }

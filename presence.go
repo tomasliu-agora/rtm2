@@ -3,13 +3,14 @@ package rtm2
 type PresenceEventType int
 
 const (
-	PresenceTypeSnapshot     PresenceEventType = 0
-	PresenceTypeInterval     PresenceEventType = 1
-	PresenceTypeJoinChannel  PresenceEventType = 2
-	PresenceTypeLeaveChannel PresenceEventType = 3
-	PresenceTypeTimeout      PresenceEventType = 4
-	PresenceTypeStateChange  PresenceEventType = 5
-	PresenceTypeOutOfService PresenceEventType = 6
+	PresenceTypeNone         PresenceEventType = 0
+	PresenceTypeSnapshot     PresenceEventType = 1
+	PresenceTypeInterval     PresenceEventType = 2
+	PresenceTypeJoinChannel  PresenceEventType = 3
+	PresenceTypeLeaveChannel PresenceEventType = 4
+	PresenceTypeTimeout      PresenceEventType = 5
+	PresenceTypeStateChange  PresenceEventType = 6
+	PresenceTypeOutOfService PresenceEventType = 7
 )
 
 type PresenceEvent struct {
@@ -75,7 +76,12 @@ type Presence interface {
 	WhoNow(channel string, channelType ChannelType, opts ...PresenceOption) (map[string]*UserState, string, error)
 	// WhereNow all channels certain user has joined. No matter Message Channel or Stream Channel.
 	WhereNow(userId string) ([]*ChannelInfo, error)
-
+	// GetOnlineUsers returns all users joined certain channel.
+	// Paging is supported: if there are more Users, return "next page index" on second return value.
+	// Use WithPage to start from "next page index".
+	GetOnlineUsers(channel string, channelType ChannelType, opts ...PresenceOption) (map[string]*UserState, string, error)
+	// GetUserChannels all channels certain user has joined. No matter Message Channel or Stream Channel.
+	GetUserChannels(userId string) ([]*ChannelInfo, error)
 	// SetState can be called before Join Stream Channel or Subscribe Message Channel.
 	// Cache the state and auto set after Join or Subscribe.
 	SetState(channel string, channelType ChannelType, data map[string]string) error

@@ -4,8 +4,9 @@ package rtm2
 type ChannelType int
 
 const (
-	ChannelTypeMessage ChannelType = 0 // Message Channel
-	ChannelTypeStream  ChannelType = 1 // Stream Channel
+	ChannelTypeNone    ChannelType = 0
+	ChannelTypeMessage ChannelType = 1 // Message Channel
+	ChannelTypeStream  ChannelType = 2 // Stream Channel
 )
 
 // ConnectionEvent will be notified when the connection state changes between rtm sdk and agora service.

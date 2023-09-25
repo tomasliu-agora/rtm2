@@ -9,13 +9,15 @@ const (
 )
 
 type Message struct {
-	UserId  string
-	Type    MessageType
-	Message []byte
+	UserId     string
+	Type       MessageType
+	Message    []byte
+	CustomType string
 }
 
 type MessageOptions struct {
-	Type MessageType
+	Type       MessageType
+	CustomType string
 
 	Message  bool
 	Metadata bool
@@ -61,5 +63,12 @@ func WithMessagePresence(enabled bool) MessageOption {
 func WithMessageLock(enabled bool) MessageOption {
 	return func(c *MessageOptions) {
 		c.Lock = enabled
+	}
+}
+
+// WithMessageCustomType is custom type of the message, up to 32 bytes for customize
+func WithMessageCustomType(customType string) MessageOption {
+	return func(c *MessageOptions) {
+		c.CustomType = customType
 	}
 }

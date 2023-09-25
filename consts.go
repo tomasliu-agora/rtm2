@@ -28,27 +28,31 @@ const (
 
 	// Connection State Change Reason in ConnectionEvent
 
-	ConnectionChangedReasonConnecting                 = 0
-	ConnectionChangedReasonJoinSuccess                = 1
-	ConnectionChangedReasonInterrupted                = 2
-	ConnectionChangedReasonBannedByServer             = 3
-	ConnectionChangedReasonJoinFailed                 = 4
-	ConnectionChangedReasonLeaveChannel               = 5
-	ConnectionChangedReasonInvalidAppId               = 6
-	ConnectionChangedReasonInvalidChannelName         = 7
-	ConnectionChangedReasonInvalidToken               = 8
-	ConnectionChangedReasonTokenExpired               = 9
-	ConnectionChangedReasonRejectedByServer           = 10
-	ConnectionChangedReasonSettingProxyServer         = 11
-	ConnectionChangedReasonRenewToken                 = 12
-	ConnectionChangedReasonClientIpAddrChanged        = 13
-	ConnectionChangedReasonKeepaliveTimeout           = 14
-	ConnectionChangedReasonRejoinSuccess              = 15
-	ConnectionChangedReasonLost                       = 16
-	ConnectionChangedReasonEchoLost                   = 17
-	ConnectionChangedReasonClientIpAddrChangedByUser  = 18
-	ConnectionChangedReasonSameUidLogin               = 19
-	ConnectionChangedReasonTooManyBroadcaster         = 20
-	ConnectionChangedReasonStreamChannelNotAvaliabled = 22
-	ConnectionChangedReasonLoginSuccess               = 10001
+	ConnectionChangedReasonConnecting                = 0
+	ConnectionChangedReasonJoinSuccess               = 1
+	ConnectionChangedReasonInterrupted               = 2
+	ConnectionChangedReasonBannedByServer            = 3
+	ConnectionChangedReasonJoinFailed                = 4
+	ConnectionChangedReasonLeaveChannel              = 5
+	ConnectionChangedReasonInvalidAppId              = 6
+	ConnectionChangedReasonInvalidChannelName        = 7
+	ConnectionChangedReasonInvalidToken              = 8
+	ConnectionChangedReasonTokenExpired              = 9
+	ConnectionChangedReasonRejectedByServer          = 10
+	ConnectionChangedReasonSettingProxyServer        = 11
+	ConnectionChangedReasonRenewToken                = 12
+	ConnectionChangedReasonClientIpAddrChanged       = 13
+	ConnectionChangedReasonKeepaliveTimeout          = 14
+	ConnectionChangedReasonRejoinSuccess             = 15
+	ConnectionChangedReasonLost                      = 16
+	ConnectionChangedReasonEchoLost                  = 17
+	ConnectionChangedReasonClientIpAddrChangedByUser = 18
+	ConnectionChangedReasonSameUidLogin              = 19
+	ConnectionChangedReasonTooManyBroadcaster        = 20
+	ConnectionChangedReasonLicenseValidationFailure  = 21
+	ConnectionChangedReasonStreamChannelNotAvailable = 22
+	ConnectionChangedReasonInconsistentAppid         = 23
+	ConnectionChangedReasonLoginSuccess              = 10001
+	ConnectionChangedReasonLogout                    = 10002
+	ConnectionChangedReasonPresenceNotReady          = 10003
 )
